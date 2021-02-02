@@ -7,11 +7,6 @@
     </v-row>
     <v-row>
       <v-col cols="12">
-        <Spacer />
-      </v-col>
-    </v-row>
-    <v-row>
-      <v-col cols="12">
         <Scores />
       </v-col>
     </v-row>
@@ -21,13 +16,11 @@
 <script>
 import TopScores from '@/components/top_scores/Index.vue'
 import Scores from '@/components/scores/Index.vue'
-import Spacer from '@/components/scores/Spacer.vue'
 
 export default {
   components: {
     TopScores,
-    Scores,
-    Spacer
+    Scores
   }
 }
 </script>

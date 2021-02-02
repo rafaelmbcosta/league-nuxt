@@ -81,7 +81,7 @@ export default {
     padding: 0px !important;
   }
   .app-wrapper {
-    background-color: #e9e9e9;
+    background-color: #e9e9e9 !important;
     font-family: 'Montserrat' !important;
   }
   .wrapper {

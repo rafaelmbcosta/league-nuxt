@@ -1,12 +1,14 @@
 <template>
   <div>
-    The Scores Index
+    <Form />
   </div>
 </template>
 
 <script>
-export default {
+import Form from './Form'
 
+export default {
+  components: { Form }
 }
 </script>
 

@@ -1,6 +1,6 @@
 <template>
   <div class="score-spacer">
-    asdasd
+    PONTUAÇÃO  / MES
   </div>
 </template>
 
@@ -10,10 +10,10 @@ export default {
 }
 </script>
 
-<style scoped>
-  .score-spacer {
+<style>
+  .score-spacer{
     background-color: white !important;
-    border: 1px solid green;
+    border: 1px solid #707070;
     height: 40px;
   }
 </style>
