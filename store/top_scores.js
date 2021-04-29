@@ -1,4 +1,3 @@
-import axios from 'axios'
 import { topScores } from '@/services/mock'
 
 export const state = () => ({
@@ -21,17 +20,11 @@ export const mutations =  {
 }
 
 export const actions = {
-  getTopScores({commit}) {
-    commit('SET_LOADING', true)
-    topScores()
-      .then(response => {
-        commit('SET_TOP_SCORES', response.data)
-      })
-      .catch(error => {
-        state.error = error
-      })
-      .finally(() => {
-        commit('SET_LOADING', false)
-      })
+  async getTopScores({commit}) {
+    let response = await topScores()
+    await commit('SET_TOP_SCORES', response.data)
+  },
+  async setLoading({commit}, value) {
+    await commit('SET_LOADING', value)
   }
 }

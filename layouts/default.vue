@@ -8,7 +8,9 @@
     >
       <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
       <v-toolbar-title>LIGA PGE</v-toolbar-title>
-      <v-toolbar-title></v-toolbar-title>
+      <v-spacer></v-spacer>
+      <v-btn to="/login" text>LOGIN</v-btn>
+      <v-btn to="/rules/edit" text>EDIT RULES</v-btn>
     </v-app-bar>
 
     <v-navigation-drawer
@@ -23,6 +25,7 @@
 
         <v-list-item-content>
           <v-list-item-title>John Leider</v-list-item-title>
+          user: {{ $auth.user }}
         </v-list-item-content>
       </v-list-item>
 
@@ -39,10 +42,11 @@
           </v-list-item-icon>
 
           <v-list-item-content>
-            <v-list-item-title>{{ item.title }}</v-list-item-title>
+            <v-list-item-title><NuxtLink :to="item.ref">{{ item.title }}</NuxtLink></v-list-item-title>
           </v-list-item-content>
         </v-list-item>
       </v-list>
+
     </v-navigation-drawer>
 
     <v-main>
@@ -62,8 +66,8 @@ export default {
     drawer: false,
     group: null,
     items: [
-      { title: 'Home', icon: 'mdi-view-dashboard' },
-      { title: 'About', icon: 'mdi-forum' },
+      { title: 'Home', icon: 'mdi-view-dashboard', ref: '/' },
+      { title: 'Login', icon: 'mdi-login', ref: '/login' },
     ]
   }),
 

@@ -1,7 +1,8 @@
 <template>
   <v-container>
     <h2 class="title">MAIORES PONTUADORES</h2>
-
+    {{ loading }}
+    AUTH: {{ this.$auth.user }}
     <Loader v-if="loading" />
 
     <ScoresList v-if="haveScores" :scores="scores" />
@@ -16,7 +17,7 @@ import ScoresList from './ScoresList'
 
 export default {
   created() {
-    this.$store.dispatch('top_scores/getTopScores')
+    console.log("log do client")
   },
   computed: {
     ...mapState('top_scores', ['scores', 'loading']),

@@ -1,9 +1,13 @@
 import topScoresJson from '@/fixtures/top_scores/topScores.json'
 
-export const topScores = () => {
+const delayedPromise = (data) => {
   return new Promise((resolve, _reject) => {
     setTimeout(() => {
-      resolve({ data: topScoresJson })
-    }, 10000);
+      resolve({ data })
+    }, 5000);
   })
+}
+
+export const topScores = () => {
+  return delayedPromise(topScoresJson)
 }
