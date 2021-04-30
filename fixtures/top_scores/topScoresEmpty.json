@@ -1,0 +1,22 @@
+{
+  "month": {
+    "player": "Rafael Costa",
+    "team": "Ferrimbahçe",
+    "icon": "https://s3.glbimg.com/v1/AUTH_58d78b787ec34892b5aaa0c7a146155f/cartola_svg_112/escudo/e6/09/39/001d366c29-9e34-4201-958b-34aa246edfe620180414140939"
+  },
+  "league": {
+    "player": "Alberto Perdigão",
+    "team": "Perdicartola",
+    "icon": "https://s3.glbimg.com/v1/AUTH_58d78b787ec34892b5aaa0c7a146155f/cartola_svg_167/escudo/f6/37/36/00151931e3-86f4-49ed-b201-bd9416a02af620200730093736"
+  },
+  "championship": {
+    "player": "Marciano",
+    "team": "Vovô do Yan",
+    "icon": "https://s3.glbimg.com/v1/AUTH_58d78b787ec34892b5aaa0c7a146155f/cartola_svg_133/escudo/fc/12/38/00ad839309-7037-49f9-a6e1-fbff4871b2fc20190402211238"
+  },
+  "currency": {
+    "player": "Fabio Gurgel",
+    "team": "Fabayern",
+    "icon": "https://s3.glbimg.com/v1/AUTH_58d78b787ec34892b5aaa0c7a146155f/cartola_svg_108/escudo/62/39/50/0067cbf8fd-a20c-499e-bef5-f0f5c0ce5b6220180411153950"
+  }
+}
