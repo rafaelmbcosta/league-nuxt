@@ -11,7 +11,7 @@ export const mutations = {
 }
 
 export const actions = {
-  async login({state, commit}, payload) {
+  async login({commit}, payload) {
     commit("SET_LOADING", true)
     console.log('auth', this.$auth)
     try {
@@ -23,5 +23,7 @@ export const actions = {
     }
     commit("SET_LOADING", false)
     await console.log(payload)
+    await console.log('user', this.$auth.user)
+    await this.$auth.fetchUser()
   }
 }

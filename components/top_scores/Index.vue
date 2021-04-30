@@ -1,8 +1,7 @@
 <template>
   <v-container>
     <h2 class="title">MAIORES PONTUADORES</h2>
-    {{ loading }}
-    AUTH: {{ this.$auth.user }}
+
     <Loader v-if="loading" />
 
     <ScoresList v-if="haveScores" :scores="scores" />

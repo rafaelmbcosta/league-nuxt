@@ -85,12 +85,12 @@ export default {
         },
         user: {
           property: 'user',
-          // autoFetch: true
+          autoFetch: true
         },
         endpoints: {
           login: { url: '/user_token', method: 'post' },
           logout: { url: '/api/auth/logout', method: 'post' },
-          user: { url: '/api/auth/user', method: 'get' }
+          user: { url: '/user', method: 'get' }
         }
       }
     }
