@@ -79,18 +79,19 @@ export default {
     strategies: {
       local: {
         token: {
-          property: 'token',
+          property: 'jwt',
           // required: true,
           // type: 'Bearer'
         },
         user: {
-          property: 'user',
+          property: false,
           autoFetch: true
         },
         endpoints: {
-          login: { url: '/user_token', method: 'post' },
-          logout: { url: '/api/auth/logout', method: 'post' },
-          user: { url: '/user', method: 'get' }
+          login: { url: '/user_token', method: 'post', propertyName: 'jwt' },
+          logout: false,
+          // user: { url: '/users/me', method: 'get', propertyName: false }
+          user: false
         }
       }
     }

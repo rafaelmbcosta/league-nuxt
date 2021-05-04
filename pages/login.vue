@@ -22,10 +22,10 @@ export default {
     }
   },
   computed: {
-    ...mapState("auth", ["loading"])
+    ...mapState("util", ["loading"])
   },
   methods: {
-    ...mapActions("auth", ["login"])
+    ...mapActions("util", ["login"])
   }
 }
 </script>

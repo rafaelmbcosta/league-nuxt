@@ -22,8 +22,12 @@ export const actions = {
       console.log(err, 'Erro ao fazer login')
     }
     commit("SET_LOADING", false)
-    await console.log(payload)
-    await console.log('user', this.$auth.user)
-    await this.$auth.fetchUser()
+  },
+  async logout() {
+    console.log('logout called')
+    await this.$auth.logout();
+    // this.$store.state.auth.loggedIn = false
+    // this.$store.state.auth.user = null
+    this.$router.push('/')
   }
 }
