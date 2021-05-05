@@ -7,10 +7,19 @@
       dark
     >
       <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
-      <v-toolbar-title>LIGA PGE</v-toolbar-title>
+      <v-toolbar-title>
+        LIGA PGE
+      </v-toolbar-title>
       <v-spacer></v-spacer>
-      <v-btn to="/login" text>LOGIN</v-btn>
-      <v-btn to="/rules/edit" text>EDIT RULES</v-btn>
+      <v-btn
+        text
+        v-for="(item, index) in topBarList"
+        :key="index"
+        :to="item.ref === null ? null : item.ref"
+        @click="item.logout ? logout() : null"
+      >
+        {{ item.title }}
+      </v-btn>
     </v-app-bar>
 
     <v-navigation-drawer
@@ -18,14 +27,9 @@
       absolute
       temporary
     >
-      <v-list-item>
-        <v-list-item-avatar>
-          <v-img src="https://randomuser.me/api/portraits/men/78.jpg"></v-img>
-        </v-list-item-avatar>
-
+      <v-list-item v-if="this.$auth.loggedIn">
         <v-list-item-content>
-          <v-list-item-title>John Leider</v-list-item-title>
-          user: {{ $auth.user }}
+          <v-list-item-title>Olá Admin!</v-list-item-title>
         </v-list-item-content>
       </v-list-item>
 
@@ -33,7 +37,7 @@
 
       <v-list dense>
         <v-list-item
-          v-for="item in items"
+          v-for="item in menuList"
           :key="item.title"
           link
         >
@@ -42,7 +46,14 @@
           </v-list-item-icon>
 
           <v-list-item-content>
-            <v-list-item-title><NuxtLink :to="item.ref">{{ item.title }}</NuxtLink></v-list-item-title>
+            <v-list-item-title>
+              <NuxtLink
+                :to="item.ref === null ? '#' : item.ref"
+                @click="item.logout ? logout() : null"
+              >
+                {{ item.title }}
+              </NuxtLink>
+            </v-list-item-title>
           </v-list-item-content>
         </v-list-item>
       </v-list>
@@ -66,11 +77,26 @@ export default {
     drawer: false,
     group: null,
     items: [
-      { title: 'Home', icon: 'mdi-view-dashboard', ref: '/' },
-      { title: 'Login', icon: 'mdi-login', ref: '/login' },
+      { title: 'Home', icon: 'mdi-view-dashboard', ref: '/', auth: null, menu: true },
+      { title: 'Login', icon: 'mdi-login', ref: '/login', auth: false, menu: true },
+      { title: 'Logout', icon: 'mdi-logout', ref: null, logout: true, auth: true, menu: true },
+      { title: 'Editar Regras', icon: 'assignment', ref: '/rules/edit', auth: true, menu: false },
+      { title: 'Regras', icon: 'chrome_reader_mode', ref: '/rules', auth: null, menu: false }
     ]
   }),
-
+  computed: {
+    menuList() {
+      return this.items.filter(e => e.auth === this.$auth.loggedIn || e.auth === null)
+    },
+    topBarList() {
+      return this.menuList.filter(e => e.menu)
+    }
+  },
+  methods: {
+    logout() {
+      this.$store.dispatch('util/logout')
+    }
+  },
   watch: {
     group () {
       this.drawer = false
