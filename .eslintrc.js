@@ -1,20 +1,9 @@
 module.exports = {
-  root: true,
-  env: {
-    browser: true,
-    node: true
-  },
+  plugins: ['@typescript-eslint'],
   parserOptions: {
-    parser: 'babel-eslint'
+    parser: '@typescript-eslint/parser'
   },
-  extends: [
-    '@nuxtjs',
-    'plugin:nuxt/recommended'
-  ],
-  plugins: [
-  ],
-  // add your custom rules here
+  extends: ['@nuxtjs/eslint-config-typescript'],
   rules: {
-    'eol-last': ["error", "never"]
   }
 }

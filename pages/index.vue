@@ -10,15 +10,12 @@
         <Scores />
       </v-col>
     </v-row>
-    <v-row>
-    </v-row>
   </div>
 </template>
 
 <script>
 import TopScores from '@/components/top_scores/Index.vue'
 import Scores from '@/components/scores/Index.vue'
-import { topScores } from '@/services/mock'
 
 export default {
   components: {
