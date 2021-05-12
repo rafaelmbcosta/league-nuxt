@@ -1,7 +1,8 @@
 <template>
   <v-container>
-    <h2 class="title">MAIORES PONTUADORES</h2>
-
+    <h2 class="title">
+      MAIORES PONTUADORES
+    </h2>
     <Loader v-if="loading" />
 
     <ScoresList v-if="haveScores" :scores="scores" />
@@ -15,14 +16,11 @@ import Loader from './Loader'
 import ScoresList from './ScoresList'
 
 export default {
-  created() {
-    console.log("log do client")
-  },
+  components: { Loader, ScoresList },
   computed: {
     ...mapState('top_scores', ['scores', 'loading']),
     ...mapGetters('top_scores', ['haveScores'])
-  },
-  components: { Loader, ScoresList }
+  }
 }
 
 </script>
