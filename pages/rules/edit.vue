@@ -1,7 +1,10 @@
 <template>
   <div>
     <h1> Edição de Regras </h1>
-    <Editor class="mt-12" />
+    <div v-if="$apollo.loading">
+      Carregando editor...
+    </div>
+    <Editor v-else class="mt-12" />
   </div>
 </template>
 

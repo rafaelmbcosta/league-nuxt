@@ -1,20 +1,21 @@
 <template>
   <v-app class="app-wrapper">
+    <Snackbar />
     <v-app-bar
       color="primary"
       absolute
       dense
       dark
     >
-      <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
+      <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
       <v-toolbar-title>
         LIGA PGE
       </v-toolbar-title>
-      <v-spacer></v-spacer>
+      <v-spacer />
       <v-btn
-        text
         v-for="(item, index) in topBarList"
         :key="index"
+        text
         :to="item.ref === null ? null : item.ref"
         @click="item.logout ? logout() : null"
       >
@@ -33,7 +34,7 @@
         </v-list-item-content>
       </v-list-item>
 
-      <v-divider></v-divider>
+      <v-divider />
 
       <v-list dense>
         <v-list-item
@@ -57,22 +58,25 @@
           </v-list-item-content>
         </v-list-item>
       </v-list>
-
     </v-navigation-drawer>
 
     <v-main>
       <v-container>
-        <div  class="wrapper">
+        <div class="wrapper">
           <nuxt />
         </div>
       </v-container>
     </v-main>
-
   </v-app>
 </template>
 
 <script>
+import Snackbar from '@/components/shared/Snackbar'
+
 export default {
+  components: {
+    Snackbar
+  },
   data: () => ({
     drawer: false,
     group: null,
@@ -85,21 +89,21 @@ export default {
     ]
   }),
   computed: {
-    menuList() {
+    menuList () {
       return this.items.filter(e => e.auth === this.$auth.loggedIn || e.auth === null)
     },
-    topBarList() {
+    topBarList () {
       return this.menuList.filter(e => e.menu)
-    }
-  },
-  methods: {
-    logout() {
-      this.$store.dispatch('util/logout')
     }
   },
   watch: {
     group () {
       this.drawer = false
+    }
+  },
+  methods: {
+    logout () {
+      this.$store.dispatch('util/logout')
     }
   }
 }

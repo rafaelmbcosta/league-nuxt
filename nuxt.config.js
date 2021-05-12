@@ -74,7 +74,7 @@ export default {
           info: colors.teal.lighten1,
           warning: colors.amber.base,
           error: colors.deepOrange.accent4,
-          success: colors.green.accent3
+          success: colors.teal.accent4
         }
       }
     }
@@ -94,8 +94,6 @@ export default {
       local: {
         token: {
           property: 'jwt'
-          // required: true,
-          // type: 'Bearer'
         },
         user: {
           property: false,
@@ -104,7 +102,6 @@ export default {
         endpoints: {
           login: { url: '/user_token', method: 'post', propertyName: 'jwt' },
           logout: false,
-          // user: { url: '/users/me', method: 'get', propertyName: false }
           user: false
         }
       }
