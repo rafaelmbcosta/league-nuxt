@@ -5,7 +5,9 @@
         <div class="d-flex flex-column justify-center text-center">
           <h3> {{ score.title }} </h3>
           <v-img :src="score.icon" class="mt-5 mx-auto text-center" width="40%" />
-          <div class="mt-5"><b>{{ score.team }}</b></div>
+          <div class="mt-5">
+            <b>{{ score.team }}</b>
+          </div>
           <div>{{ score.player }}</div>
         </div>
       </v-card-text>
@@ -13,9 +15,22 @@
   </v-col>
 </template>
 
-<script>
+<script lang="ts">
+import { PropOptions } from 'vue'
+
+interface Score {
+  title: string
+  team: string
+  player: string
+}
+
 export default {
-  props: ["score"]
+  props: {
+    score: {
+      type: Object,
+      required: true
+    } as PropOptions<Score>
+  }
 }
 </script>
 
