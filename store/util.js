@@ -2,12 +2,27 @@
 // import { GetterTree, ActionTree, MutationTree } from 'vuex'
 
 export const state = () => ({
-  loading: false
+  loading: false, // login
+  snackBar: {
+    show: false,
+    color: '',
+    text: ''
+  }
 })
 
 export const mutations = {
   SET_LOADING (state, value) {
     state.loading = value
+  },
+  SEND_MESSAGE (state, [type, text]) {
+    state.snackBar = { color: type, text, show: true }
+  },
+  RESET_SNACKBAR (state) {
+    state.snackBar = {
+      show: false,
+      color: '',
+      text: ''
+    }
   }
 }
 
@@ -25,5 +40,11 @@ export const actions = {
   async logout () {
     await this.$auth.logout()
     this.$router.push('/')
+  },
+  closeSnack ({ commit }) {
+    commit('RESET_SNACKBAR')
+  },
+  sendMessage ({ commit }, messageArray) {
+    commit('SEND_MESSAGE', messageArray)
   }
 }

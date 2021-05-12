@@ -4,10 +4,14 @@
       v-model="newText"
       :value="newText"
       :extensions="extensions"
-      output-format="json"
       @input="$emit('input', arguments[0])"
     />
-    <v-btn color="primary" class="mt-10" @click="saveText()">
+    <v-btn
+      color="primary"
+      :loading="loading"
+      class="mt-10"
+      @click="saveText()"
+    >
       Salvar
     </v-btn>
   </div>
@@ -30,6 +34,7 @@ import {
 export default {
   components: { TiptapVuetify },
   data: () => ({
+    loading: false,
     newText: '',
     extensions: [
       History,
@@ -50,14 +55,7 @@ export default {
     ]
   }),
   mounted () {
-    if (this.currentRules) {
-      this.newText = JSON.parse(this.currentRules.text)
-      //   type="doc",
-      //   JSON.parse(this.currentRules.text)
-      // }
-    } else {
-      this.newText = ''
-    }
+    this.newText = this.currentRules ? this.currentRules.text : ''
   },
   apollo: {
     currentRules: gql`query {
@@ -67,21 +65,34 @@ export default {
     }`
   },
   methods: {
-    saveText () {
-      console.log(JSON.stringify(this.newText.content))
-      this.$apollo.mutate({
-        mutation: gql`mutation ($text: String!) {
-          saveRules(text: $text) {
-            id,
-            text
+    async saveText () {
+      this.loading = true
+      try {
+        await this.$apollo.mutate({
+          mutation: gql`mutation ($text: String!) {
+            saveRules(text: $text) {
+              id,
+              text
+            }
+          }`,
+          variables: {
+            text: this.newText
+          },
+          refetchQueries: [{
+            query: gql`query {
+              currentRules {
+                text
+              }
+            }`
+          }],
+          update: () => {
+            this.$store.dispatch('util/sendMessage', ['success', 'Regras atualizadas com sucesso'])
+            this.loading = false
           }
-        }`,
-        variables: {
-          // console.log(JSON.stringify(this.newText.content))
-          text: JSON.stringify(this.newText)
-        }
-        // aqui atualizar o currentRules
-      })
+        })
+      } catch (e) {
+        this.$store.dispatch('util/sendMessage', ['error', 'Erro ao atualizar regras'])
+      }
     }
   }
 }
