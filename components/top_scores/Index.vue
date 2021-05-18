@@ -5,7 +5,10 @@
     </h2>
     <Loader v-if="loading" />
 
-    <ScoresList v-if="haveScores" :scores="scores" />
+    <ScoresList
+      v-if="haveScores"
+      :scores="scores"
+    />
   </v-container>
 </template>
 
