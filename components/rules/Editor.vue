@@ -19,6 +19,7 @@
 
 <script>
 import gql from 'graphql-tag'
+
 import {
   TiptapVuetify,
   Heading,
