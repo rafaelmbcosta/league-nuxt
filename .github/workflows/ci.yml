@@ -45,7 +45,7 @@ jobs:
         run: yarn
 
       - name: Run tests 🧪
-        run: yarn test
+        run: yarn test-with-coverage
       - name: Send coverage reports
         uses: codacy/codacy-coverage-reporter-action@v1
         with:
