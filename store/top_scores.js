@@ -1,4 +1,4 @@
-import { topScores } from "@/services/mock"
+import { topScores } from "@/services/mock";
 
 export const state = () => ({
   loading: false,
