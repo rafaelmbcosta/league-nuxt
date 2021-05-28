@@ -1,3 +1,5 @@
+import { topScores } from "@/services/mock";
+
 export const state = () => ({
   loading: false,
   scores: null,
