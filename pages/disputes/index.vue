@@ -24,7 +24,7 @@ import DisputeCard from '@/components/disputes/DisputeCard'
 import gql from 'graphql-tag'
 
 export default {
-  middleware: ['auth'],
+  middleware: ["auth"],
   components: { DisputeCard },
   apollo: {
     disputes: gql`query {
