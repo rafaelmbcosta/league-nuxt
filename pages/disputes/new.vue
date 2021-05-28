@@ -32,7 +32,7 @@ export default {
   data() {
     return {
       loading: false,
-      description: ''
+      description: ""
     }
   },
   middleware: ['auth'],
