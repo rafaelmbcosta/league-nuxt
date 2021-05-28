@@ -9,7 +9,7 @@
 
 <script>
 export default {
-  props: ['color'],
+  props: ["color"],
   computed: {
     style() {
       return {
