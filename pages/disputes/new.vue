@@ -65,7 +65,7 @@ export default {
           }
         })
       } catch (error) {
-        this.$store.dispatch('util/sendMessage', ['error', `Erro ao criar mês de disputa: ${error}`])
+        this.$store.dispatch("util/sendMessage", ['error', `Erro ao criar mês de disputa: ${error}`])
       }
     }
   }
