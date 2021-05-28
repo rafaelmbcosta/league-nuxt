@@ -18,7 +18,7 @@ export default {
     BorderCard
   },
 
-  props: ['dispute']
+  props: ["dispute"]
 }
 </script>
 
