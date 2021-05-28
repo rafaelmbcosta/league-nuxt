@@ -92,7 +92,7 @@ export default {
           }
         })
       } catch (e) {
-        this.$store.dispatch('util/sendMessage', ['error', 'Erro ao atualizar regras'])
+        this.$store.dispatch('util/sendMessage', ['error', `Erro ao atualizar regras ${e}`])
       }
     }
   }

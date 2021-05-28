@@ -38,7 +38,7 @@ export default {
     // '@nuxtjs/eslint-module',
     // https://go.nuxtjs.dev/vuetify
     '@nuxtjs/vuetify',
-    '@nuxt/typescript-build'
+    '@nuxt/typescript-build',
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -54,7 +54,7 @@ export default {
   apollo: {
     clientConfigs: {
       default: {
-        httpEndpoint: 'http://192.168.99.100:3000/graphql'
+        httpEndpoint: 'http://localhost:3000/graphql'
       }
     }
   },
@@ -86,7 +86,7 @@ export default {
   },
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
-    baseURL: 'http://192.168.99.100:3000'
+    baseURL: 'http://localhost:3000'
   },
 
   auth: {
