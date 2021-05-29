@@ -19,13 +19,13 @@
 </template>
 
 <script>
-import gql from 'graphql-tag'
+import gql from "graphql-tag";
 export default {
-  name: 'tag',
+  name: "tag",
   data: () => {
     return {
       idTag: null
-    }
+    };
   },
   methods: {
     async saveMember() {
@@ -41,9 +41,9 @@ export default {
           variables: {
             teamId: this.idTag
           },
-        })
+        });
       } catch (err) {
-        console.log(err)
+        this.$store.dispatch("util/sendMessage", ['error', `Erro ao cadastrar time pela tag: ${err}`])
       }
     }
   }
