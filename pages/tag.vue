@@ -43,7 +43,7 @@ export default {
           },
         });
       } catch (err) {
-        this.$store.dispatch("util/sendMessage", ['error', `Erro ao cadastrar time pela tag: ${err}`])
+        this.$store.dispatch("util/sendMessage", ["error", `Erro ao cadastrar time pela tag: ${err}`]);
       }
     }
   }
