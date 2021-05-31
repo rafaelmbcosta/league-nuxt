@@ -87,7 +87,8 @@ export default {
       { title: 'Editar Regras', icon: 'assignment', ref: '/rules/edit', auth: true, menu: false },
       { title: 'Regras', icon: 'chrome_reader_mode', ref: '/rules', auth: null, menu: false },
       { title: "Cadastrar Pela Tag", icon: 'chrome_reader_mode', ref: '/tag', auth: null, menu: false },
-      { title: "Meses de Disputa", icon: "mdi-calendar", ref: "/disputes", auth: true, menu: false }
+      { title: "Meses de Disputa", icon: "mdi-calendar", ref: "/disputes", auth: true, menu: false },
+      { title: "Cadastrar Times", icon: "mdi-calendar", ref: "/teams", auth: true, menu: false }
     ]
   }),
   computed: {
