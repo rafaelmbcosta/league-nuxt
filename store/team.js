@@ -17,7 +17,6 @@ export const mutations = {
     state.loading = value
   },
   SET_SEARCH_TEAMS (state, data) {
-    console.log(data, 'Mutation')
     state.searchTeams = data
   }
 }
@@ -25,8 +24,17 @@ export const mutations = {
 export const actions = {
   async getApiTeams ({ commit }, param) {
     const response = await this.$axios.$get(`/api/v1/teams/find_team?search[q]=${param}`)
-    console.log(response, 'Response')
     await commit('SET_SEARCH_TEAMS', response)
+  },
+  async activeTeam ({ _commit }, { active, id }) {
+    try {
+      const response = await this.$axios.$post('/api/v1/teams/activation', { team: {
+        id,
+        active: !active
+      } } )
+    } catch(err) {
+      console.log(err)
+    }
   },
   async setLoading ({ commit }, value) {
     await commit('SET_LOADING', value)
