@@ -3,19 +3,21 @@
     color="green"
     class="mt-5"
   >
-    <div>{{ dispute.name }}</div>
-    <div>STATUS: {{ dispute.status }}</div>
-    <div>RODADAS: {{ dispute.rounds }}</div>
+    <h3>{{ dispute.name.toUpperCase() }}</h3>
+    <div class="mt-5">RODADAS: {{ dispute.rounds.join(',') }}</div>
     <div>{{ dispute }}</div>
+    <Actions :dispute="dispute" v-if="dispute.status == 'created'" />
   </BorderCard>
 </template>
 
 <script>
+import Actions from './Actions'
 import BorderCard from '@/components/shared/BorderCard'
 
 export default {
   components: {
-    BorderCard
+    BorderCard,
+    Actions
   },
 
   props: ['dispute']
