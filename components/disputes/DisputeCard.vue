@@ -20,7 +20,7 @@ export default {
     Actions
   },
 
-  props: ['dispute']
+  props: ["dispute"]
 }
 </script>
 
