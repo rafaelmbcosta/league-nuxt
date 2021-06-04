@@ -30,15 +30,18 @@ export const actions = {
   async login ({ commit }, payload) {
     commit('SET_LOADING', true)
     try {
-      await this.$auth.loginWith('local', {
+      const response = await this.$auth.loginWith('local', {
         data: { auth: payload }
       })
+      this.$apolloHelpers.onLogin(response.data.jwt)
     } catch (err) {
+      console.log('LOGIN ERROR', err)
     }
     commit('SET_LOADING', false)
   },
   async logout () {
     await this.$auth.logout()
+    this.$apolloHelpers.onLogout()
     this.$router.push('/')
   },
   closeSnack ({ commit }) {
