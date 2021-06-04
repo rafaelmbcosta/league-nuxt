@@ -47,17 +47,19 @@ export default {
     'nuxt-material-design-icons-iconfont',
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
-    '@nuxtjs/auth-next',
-    '@nuxtjs/auth'
+    // '@nuxtjs/auth-next',
+    // '@nuxtjs/auth'
   ],
 
   apollo: {
     clientConfigs: {
-      default: {
-        httpEndpoint: 'http://localhost:3000/graphql'
-      }
+      default: '~/plugins/alternativeApolloConfig.js'
     }
   },
+
+  authenticationType: 'Bearer',
+  tokenName: 'apollo-token',
+  websocketsOnly: false,
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
   vuetify: {
@@ -89,22 +91,22 @@ export default {
     baseURL: 'http://localhost:3000'
   },
 
-  auth: {
-    strategies: {
-      local: {
-        token: {
-          property: 'jwt'
-        },
-        user: {
-          property: false,
-          autoFetch: true
-        },
-        endpoints: {
-          login: { url: '/user_token', method: 'post', propertyName: 'jwt' },
-          logout: false,
-          user: false
-        }
-      }
-    }
-  }
+  // auth: {
+  //   strategies: {
+  //     local: {
+  //       token: {
+  //         property: 'jwt'
+  //       },
+  //       user: {
+  //         property: false,
+  //         autoFetch: true
+  //       },
+  //       endpoints: {
+  //         login: { url: '/user_token', method: 'post', propertyName: 'jwt' },
+  //         logout: false,
+  //         user: false
+  //       }
+  //     }
+  //   }
+  // }
 }

@@ -2,7 +2,8 @@
 // import { GetterTree, ActionTree, MutationTree } from 'vuex'
 
 export const state = () => ({
-  loading: false, // login
+  loading: false, // login,
+  token: null,
   snackBar: {
     show: false,
     color: '',
@@ -13,6 +14,12 @@ export const state = () => ({
 export const mutations = {
   SET_LOADING (state, value) {
     state.loading = value
+  },
+  SET_TOKEN (state, value) {
+    state.token = value
+  },
+  CLEAR_TOKEN (state) {
+    state.token = ''
   },
   SEND_MESSAGE (state, [type, text]) {
     state.snackBar = { color: type, text, show: true }

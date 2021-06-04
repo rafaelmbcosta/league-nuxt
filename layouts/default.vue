@@ -28,7 +28,7 @@
       absolute
       temporary
     >
-      <v-list-item v-if="this.$auth.loggedIn">
+      <v-list-item v-if="token">
         <v-list-item-content>
           <v-list-item-title>Olá Admin!</v-list-item-title>
         </v-list-item-content>
@@ -71,6 +71,7 @@
 </template>
 
 <script>
+import { mapState } from "vuex"
 import Snackbar from '@/components/shared/Snackbar'
 
 export default {
@@ -92,8 +93,9 @@ export default {
     ]
   }),
   computed: {
+    ...mapState("util", ["token"]),
     menuList () {
-      return this.items.filter(e => e.auth === this.$auth.loggedIn || e.auth === null)
+      return this.items.filter(e => e.auth === !!this.token || e.auth === null)
     },
     topBarList () {
       return this.menuList.filter(e => e.menu)
@@ -105,8 +107,11 @@ export default {
     }
   },
   methods: {
-    logout () {
-      this.$store.dispatch('util/logout')
+    async logout () {
+      console.log("Logout")
+       await this.$apolloHelpers.onLogout()
+       this.$store.commit("util/CLEAR_TOKEN")
+       this.$router.push('/')
     }
   }
 }
