@@ -54,9 +54,12 @@ export default {
   apollo: {
     clientConfigs: {
       default: {
-        httpEndpoint: 'http://localhost:3000/graphql'
+        httpEndpoint: `${process.env.BASE_URL}/graphql`
       }
-    }
+    },
+    authenticationType: '',
+    tokenName: 'apollo-token',
+    websocketsOnly: false
   },
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
@@ -86,7 +89,7 @@ export default {
   },
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
-    baseURL: 'http://localhost:3000'
+    baseURL: `${process.env.BASE_URL}`
   },
 
   auth: {
@@ -101,7 +104,7 @@ export default {
         },
         endpoints: {
           login: { url: '/user_token', method: 'post', propertyName: 'jwt' },
-          logout: false,
+          logout:  { url: '/logout', method: 'post' },
           user: false
         }
       }
