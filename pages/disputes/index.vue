@@ -21,22 +21,13 @@
 
 <script>
 import DisputeCard from '@/components/disputes/DisputeCard'
-import gql from 'graphql-tag'
+import { DISPUTES } from '@/graphql/queries/disputes/disputes'
 
 export default {
   middleware: ["auth"],
   components: { DisputeCard },
   apollo: {
-    disputes: gql`query {
-      disputes {
-        id
-        name
-        status
-        rounds {
-          number
-        }
-      }
-    }`
+    disputes: DISPUTES
   }
 }
 </script>
