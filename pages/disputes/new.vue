@@ -25,6 +25,7 @@
 
 <script>
 import BorderCard from '@/components/shared/BorderCard'
+import { DISPUTES } from '@/graphql/queries/disputes/disputes'
 import gql from 'graphql-tag'
 
 export default {
@@ -47,17 +48,7 @@ export default {
           variables: {
             name: this.description
           },
-          refetchQueries: [{
-            query: gql`query {
-              disputes {
-                id
-                name
-                rounds {
-                  number
-                }
-              }
-            }`
-          }],
+          refetchQueries: [{ query: DISPUTES }],
           update: () => {
             this.$store.dispatch('util/sendMessage', ['success', 'Mês de disputa criado com sucesso !'])
             this.loading = false

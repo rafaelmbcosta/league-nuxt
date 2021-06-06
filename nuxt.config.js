@@ -45,10 +45,8 @@ export default {
   modules: [
     '@nuxtjs/apollo',
     'nuxt-material-design-icons-iconfont',
-    // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
-    '@nuxtjs/auth-next',
-    '@nuxtjs/auth'
+    '@nuxtjs/auth-next'
   ],
 
   apollo: {
@@ -90,7 +88,7 @@ export default {
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     baseURL: `${process.env.BASE_URL}`,
-    https: true
+    https: process.env.SSL
   },
 
   auth: {
