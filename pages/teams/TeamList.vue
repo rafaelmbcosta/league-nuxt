@@ -48,7 +48,7 @@
 </template>
 
 <script>
-import gql from "graphql-tag";
+import { TEAMS } from '../../graphql/teams/ListTeams'
 
 export default {
   name: "TeamList",
@@ -59,20 +59,7 @@ export default {
       imageError: false
     }
   },
-  // Tentar isolar essa query
-  apollo: {
-    teams: gql`
-     query teams {
-       teams {
-         id
-         active
-         name
-         playerName
-         urlEscudoPng
-       }
-     }
-    `
-  },
+  apollo: { teams: TEAMS },
   methods: {
     altImageError() {
       this.imageError = true

@@ -1,8 +1,8 @@
 <template>
   <v-container>
-    <h2 class="mb-8">PARTICIPANTES</h2>
-    <v-btn @click="getTeamsAxios" color="primary">Adicionar Participante</v-btn>
-    <FormAddTeam />
+    <h2 v-if="!add" class="mb-8">PARTICIPANTES</h2>
+    <v-btn v-if="!add" @click="add = !add" color="primary">Adicionar Participante</v-btn>
+    <FormAddTeam v-if="add"  />
     <TeamList class="mt-12" />
   </v-container>
 </template>
@@ -16,6 +16,7 @@ export default {
   components: { TeamList, FormAddTeam },
   data: () => {
     return {
+      add: false,
       selectedTeam: null,
     }
   },
@@ -24,29 +25,6 @@ export default {
   },
   computed: {
     ...mapGetters("team", ["getSearchTeams"])
-  },
-  methods: {
-    getTeamsAxios() {
-     this.$store.dispatch("team/getApiTeams", 'zora')
-    },
-    async saveTeam() {
-      try {
-        await this.$apollo.mutate({
-          mutation: gql`mutation($teamId: Int!) {
-            createTeamById(teamId: $teamId) {
-              id
-              idTag
-              playerName
-            }
-          }`,
-          variables: {
-            teamId: this.idTag
-          },
-        });
-      } catch (err) {
-        this.$store.dispatch("util/sendMessage", ["error", `Erro ao cadastrar time pela tag: ${err}`]);
-      }
-    }
   }
 }
 </script>

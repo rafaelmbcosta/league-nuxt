@@ -90,7 +90,7 @@ export default {
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     baseURL: `${process.env.BASE_URL}`,
-    https: true
+    https: process.env.SSL
   },
 
   auth: {
