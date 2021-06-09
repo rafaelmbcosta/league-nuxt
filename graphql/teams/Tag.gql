@@ -1,0 +1,7 @@
+mutation createTeamByTag($teamId: Int!) {
+  createTeamById(teamId: $teamId) {
+    id
+    idTag
+    playerName
+  }
+}

@@ -19,7 +19,7 @@ import { mapActions, mapState } from 'vuex'
 export default {
   data () {
     return {
-      email: 'teste@gmail.com',
+      email: 'zora@gmail.com',
       password: '123456'
     }
   },
