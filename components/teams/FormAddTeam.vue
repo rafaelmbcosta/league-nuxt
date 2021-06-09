@@ -2,7 +2,7 @@
 <v-container>
   <h2 class="mb-8">ADICIONAR PARTICIPANTE</h2>
   <v-card :class="$style['left-border']">
-    <v-progress-linear v-if="getIsLoading" indeterminate color="teal darken-2" />
+    <v-progress-linear v-if="isLoading" indeterminate color="teal darken-2" />
     <v-card-text>
       <v-form>
         <v-autocomplete
@@ -10,7 +10,7 @@
           :search-input.sync="autoCompleteInput"
           cache-items
           label="Buscar Time"
-          :items="getSearchTeams"
+          :items="searchTeams"
           item-text="nome"
           return-object
         >
@@ -27,12 +27,9 @@
           </template>
 
           <template v-slot:item="data">
-            <template v-if="typeof data.item !== 'object'">
-              {{ data.item.nome }}
-            </template>
-            <template v-else>
+            <template v-if="!!data && data.item">
               <TeamItem
-                :team=" {
+                :team="{
                   name: data.item.nome,
                   player_name: data.item.nome_cartola,
                   url_escudo_png: data.item.url_escudo_png,
@@ -43,7 +40,6 @@
           </template>
         </v-autocomplete>
       </v-form>
-
       <v-card-actions>
         <v-btn :disabled="selectedTeam === null" @click="addTeam" color="primary">ADICIONAR</v-btn>
       </v-card-actions>
@@ -57,6 +53,8 @@
 <script>
 import { mapGetters, mapActions } from "vuex"
 import TeamItem from "./TeamItem"
+import { TEAMS } from "@/graphql/queries/teams/list"
+
 export default {
   components: {TeamItem},
   data: () => {
@@ -65,18 +63,22 @@ export default {
       autoCompleteInput: ''
     }
   },
+  apollo: {
+    teams: { query: TEAMS }
+  },
   watch: {
     autoCompleteInput (val) {
-      val && val !== this.selectedTeam && this.getApiTeams(val)
+      val && val !== this.selectedTeam && this.getTeams(val)
     }
   },
   computed: {
-    ...mapGetters("team", ["getSearchTeams", "getIsLoading"])
+    ...mapGetters("team", ["searchTeams", "isLoading"])
   },
   methods: {
-    ...mapActions("team", ["getApiTeams"]),
+    ...mapActions("team", ["getTeams"]),
     async addTeam() {
-      this.$store.dispatch("team/addTeams", this.selectedTeam)
+      await this.$store.dispatch("team/addTeams", this.selectedTeam)
+      this.$apollo.queries.teams.refetch()
     }
   }
 }

@@ -9,8 +9,8 @@
 
 <script>
 import { mapGetters } from "vuex"
-import TeamList from './TeamList'
-import FormAddTeam from './FormAddTeam'
+import TeamList from '@/components/teams/TeamList'
+import FormAddTeam from '@/components/teams/FormAddTeam'
 
 export default {
   components: { TeamList, FormAddTeam },
@@ -20,11 +20,8 @@ export default {
       selectedTeam: null,
     }
   },
-  mounted() {
-    this.$store.dispatch("team/getApiTeams")
-  },
   computed: {
-    ...mapGetters("team", ["getSearchTeams"])
+    ...mapGetters("team", ["searchTeams"])
   }
 }
 </script>

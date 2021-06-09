@@ -74,7 +74,7 @@ export default {
           secondary: colors.white,
           info: colors.teal.lighten1,
           warning: colors.amber.base,
-          error: colors.deepOrange.accent4,
+          error: colors.red.darken3,
           success: colors.teal.accent4
         }
       }

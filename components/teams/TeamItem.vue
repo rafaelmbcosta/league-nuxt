@@ -1,6 +1,5 @@
 <template>
   <article>
-    <v-divider v-if="!first"> </v-divider>
     <v-list-item>
       <v-list-item-avatar>
         <v-img

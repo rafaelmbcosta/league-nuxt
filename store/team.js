@@ -1,20 +1,17 @@
-// import { getTeams } from '@/services/mock'
-
-const state = {
+export const state = () => ({
   teams: [],
   searchTeams: [],
-  isLoading: false
-}
+  loading: false
+})
 
-const getters = {
-  getTeams: state => state.teams,
-  getSearchTeams: state => state.searchTeams,
-  getIsLoading: state => state.isLoading,
+export const getters = {
+  searchTeams: state => state.searchTeams,
+  isLoading: state => state.loading,
 }
 
 export const mutations = {
   SET_IS_LOADING (state, value) {
-    state.isLoading = value
+    state.loading = value
   },
   SET_SEARCH_TEAMS (state, data) {
     state.searchTeams = data
@@ -22,23 +19,25 @@ export const mutations = {
 }
 
 export const actions = {
-  async getApiTeams ({ commit }, param) {
+  async getTeams ({ commit }, param) {
     const response = await this.$axios.$get(`/api/v1/teams/find_team?search[q]=${param}`)
     await commit('SET_SEARCH_TEAMS', response)
   },
   async activeTeam ({ _commit }, { active, id }) {
     try {
-      await this.$axios.$post('/api/v1/teams/activation', { team: {
-        id,
-        active: !active
-      } } )
+      await this.$axios.$post('/api/v1/teams/activation', {
+        team: {
+          id,
+          active: !active
+        }
+      })
     } catch(err) {
       console.log(err)
     }
   },
 
   async addTeams ({commit, state}, param) {
-    await commit('SET_IS_LOADING', !state.isLoading)
+    await commit('SET_IS_LOADING', true)
     try {
       await this.$axios.$post(`/api/v1/teams`, { team: {
           name: param.nome,
@@ -51,7 +50,7 @@ export const actions = {
     } catch(err) {
       commit('util/SEND_MESSAGE', ['error', `Erro ao cadastrar time: ${err}`], { root: true })
     } finally {
-      await commit('SET_IS_LOADING', !state.isLoading)
+      await commit('SET_IS_LOADING', false)
     }
   }
 }

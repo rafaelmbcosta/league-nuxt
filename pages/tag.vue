@@ -13,7 +13,8 @@
           </v-card-text>
         </v-form>
         <v-card-actions>
-          <v-btn :disabled="isLoading" @click="saveMember" color="primary">Adicionar</v-btn>
+          <v-btn class="ma-5" :disabled="isLoading" @click="saveMember" color="primary">Adicionar</v-btn>
+          <v-btn class="ma-5" to="/teams" color="error">Voltar</v-btn>
         </v-card-actions>
       </v-card>
    </v-col>
@@ -21,8 +22,8 @@
 </template>
 
 <script>
-import CreateTeamByTag from '../graphql/teams/Tag'
-import { TEAMS } from '../graphql/teams/ListTeams'
+import CreateTeamByTag from '../graphql/mutations/teams/tag'
+import { TEAMS } from '../graphql/queries/teams/list'
 
 export default {
   name: "tag",
