@@ -45,18 +45,19 @@ export default {
   modules: [
     '@nuxtjs/apollo',
     'nuxt-material-design-icons-iconfont',
-    // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
-    '@nuxtjs/auth-next',
-    '@nuxtjs/auth'
+    '@nuxtjs/auth-next'
   ],
 
   apollo: {
     clientConfigs: {
       default: {
-        httpEndpoint: 'http://localhost:3000/graphql'
+        httpEndpoint: `${process.env.BASE_URL}/graphql`
       }
-    }
+    },
+    authenticationType: '',
+    tokenName: 'apollo-token',
+    websocketsOnly: false
   },
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
@@ -73,7 +74,7 @@ export default {
           secondary: colors.white,
           info: colors.teal.lighten1,
           warning: colors.amber.base,
-          error: colors.deepOrange.accent4,
+          error: colors.red.darken3,
           success: colors.teal.accent4
         }
       }
@@ -86,7 +87,8 @@ export default {
   },
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
-    baseURL: 'http://localhost:3000'
+    baseURL: `${process.env.BASE_URL}`,
+    https: process.env.SSL
   },
 
   auth: {
@@ -101,7 +103,7 @@ export default {
         },
         endpoints: {
           login: { url: '/user_token', method: 'post', propertyName: 'jwt' },
-          logout: false,
+          logout:  { url: '/logout', method: 'post' },
           user: false
         }
       }

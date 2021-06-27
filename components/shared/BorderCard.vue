@@ -1,7 +1,7 @@
 <template>
   <v-card
     :style="style"
-    class="pa-10 card-border"
+    class="pa-8 card-border"
   >
     <slot />
   </v-card>

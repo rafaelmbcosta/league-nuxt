@@ -1,4 +1,5 @@
 import topScoresJson from '@/fixtures/top_scores/topScores.json'
+import teamsJson from '@/fixtures/teams.json'
 
 const delayedPromise = (data) => {
   return new Promise((resolve) => {
@@ -10,4 +11,8 @@ const delayedPromise = (data) => {
 
 export const topScores = () => {
   return delayedPromise(topScoresJson)
+}
+
+export const getTeams = () => {
+  return delayedPromise(teamsJson)
 }
