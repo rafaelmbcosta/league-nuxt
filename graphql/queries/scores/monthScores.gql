@@ -1,0 +1,14 @@
+query scores($disputeId: Int!) {
+  scores(disputeId: $disputeId){
+    score
+    team {
+      name
+    }
+    scores {
+      round {
+        number
+      }
+      finalScore
+    }
+  }
+}
