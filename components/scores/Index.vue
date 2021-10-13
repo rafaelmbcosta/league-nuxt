@@ -1,10 +1,5 @@
 <template>
   <div>
-    # TODO
-    <ul>
-      <li>Ajeitar as mensagens de erro no Form</li>
-      <li>Ajeitar os cards.</li>
-    </ul>
     <Form />
     <List />
   </div>

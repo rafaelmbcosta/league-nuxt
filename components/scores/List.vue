@@ -1,16 +1,24 @@
 <template>
-  <div>
-    {{ scores }}
+  <div class="mt-5">
+    <ScoreCard
+      v-for="(score, index) in scores"
+      :key="index"
+      flat
+      class="mb-1"
+      :score="score"
+      :index="index"
+    />
   </div>
 </template>
 
 <script>
 import SCORES from '@/graphql/queries/scores/monthScores'
 import { mapGetters } from 'vuex'
+import ScoreCard from './ScoreCard.vue'
 
 export default {
-  mounted() {
-    console.log(this.$apollo.queries, 'apollo queries')
+  components: {
+    ScoreCard
   },
   computed: {
     ...mapGetters('scores', ['selected'])
@@ -18,9 +26,9 @@ export default {
   apollo: {
     scores: {
       query: SCORES,
-      variables() {
+      variables () {
         return {
-          disputeId: this.selected.dispute
+          disputeId: this.selected.dispute || 0
         }
       }
     }

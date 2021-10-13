@@ -1,28 +1,29 @@
 <template>
   <div>
     <div class="score-spacer flex-row d-flex align-center">
-      <div class="item"><strong>PONTUAÇÃO</strong></div>
+      <div class="item">
+        <strong>PONTUAÇÃO</strong>
+      </div>
       <v-select
-        class="item"
         v-model="score"
+        class="item"
         :items="scores"
-        height=30
+        height="30"
         width="10px"
         item-text="text"
         item-value="type"
-      >
-      </v-select>
-      <div class="item"><strong>MÊS</strong></div>
+      />
+      <div class="item">
+        <strong>MÊS</strong>
+      </div>
       <v-select
-        class="item"
         v-model="dispute"
+        class="item"
         :items="disputes"
         item-text="name"
         item-value="id"
-      >
-      </v-select>
+      />
     </div>
-    {{ selected }}
   </div>
 </template>
 
@@ -32,14 +33,7 @@ import SCORES from '@/graphql/queries/scores/monthScores'
 import { mapGetters } from 'vuex'
 
 export default {
-  mounted() {
-    this.$store.dispatch('scores/setSelected', {
-      dispute: this.disputes[0].id,
-      score: this.scores[0].type
-    })
-    this.getScores()
-  },
-  data() {
+  data () {
     return {
       loading: false,
       query: [],
@@ -51,33 +45,39 @@ export default {
   computed: {
     ...mapGetters('scores', ['selected']),
     score: {
-      get() {
+      get () {
         return this.selected.score
       },
-      set(value) {
+      set (value) {
         this.$store.commit('scores/SET_SCORE', value)
       }
     },
     dispute: {
-      get() {
+      get () {
         return this.selected.dispute.toString()
       },
-      set(value) {
+      set (value) {
         this.$store.commit('scores/SET_DISPUTE', value)
       }
     }
   },
+  mounted () {
+    this.$store.dispatch('scores/setSelected', {
+      dispute: this.disputes[0].id,
+      score: this.scores[0].type
+    })
+    this.getScores()
+  },
   methods: {
-    async getScores() {
-      this.loading = true 
+    async getScores () {
+      this.loading = true
       try {
         this.query = await this.$apollo.query({
           query: SCORES,
           variables: { disputeId: this.selected.dispute }
         })
-        console.log(this.query, 'resultado da consulta')
-      } catch(err) {
-        console.log(err, 'error')
+      } catch (err) {
+        this.$store.dispatch('util/sendMessage', ['error', `Erro ao buscar resultados ${err}`])
       } finally {
         this.loading = false
       }
@@ -88,7 +88,6 @@ export default {
   }
 }
 </script>
-
 
 <style scoped>
   .item {

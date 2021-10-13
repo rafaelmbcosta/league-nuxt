@@ -3,6 +3,8 @@ query scores($disputeId: Int!) {
     score
     team {
       name
+      player_name
+      url_escudo_png
     }
     scores {
       round {
