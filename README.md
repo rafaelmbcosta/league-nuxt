@@ -3,6 +3,7 @@
 
 # League Nuxt
 
+I know it looks bad right now, but it will be better. Actually suggestions are appreciated
 This repository is mean to replace the old Angular 2.0 website that is running for some years. It uses:
 
 * Nuxt
