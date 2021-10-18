@@ -12,6 +12,11 @@ module.exports = {
   },
   transformIgnorePatterns: ["/node_modules/(?!vuetify)"],
   collectCoverage: true,
+  collectCoverageFrom: [
+    "**/*.{js,jsx,vue}",
+    "!**/node_modules/**",
+    "!**/vendor/**"
+  ],
   coverageReporters: [
     "lcov",
     "html"
