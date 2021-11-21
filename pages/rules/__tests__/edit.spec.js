@@ -1,11 +1,11 @@
-import { shallowMount, createLocalVue } from '@vue/test-utils'
-import Vuetify from 'vuetify'
-import edit from '../edit'
+import { shallowMount, createLocalVue } from "@vue/test-utils"
+import Vuetify from "vuetify"
+import edit from "../edit"
 
 const localVue = createLocalVue()
 
-describe('edit', () => {
-  test('loads component', () => {
+describe("edit", () => {
+  test("loads component", () => {
     const vuetify = new Vuetify()
 
     const wrapper = shallowMount(edit, {

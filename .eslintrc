@@ -1,5 +1,12 @@
 {
   "extends": [
     "@nuxtjs"
-  ]
+  ],
+  "rules": {
+    "quotes": [2, "double", "avoid-escape"]
+  },
+  "env": {
+    "jest": true
+  },
+  "plugins": ["jest"]
 }

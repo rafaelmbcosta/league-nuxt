@@ -1,21 +1,21 @@
-import colors from 'vuetify/es5/util/colors'
+import colors from "vuetify/es5/util/colors"
 
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    titleTemplate: '%s - liga-pge-app',
-    title: 'liga-pge-app',
+    titleTemplate: "%s - liga-pge-app",
+    title: "liga-pge-app",
     htmlAttrs: {
-      lang: 'en'
+      lang: "en"
     },
     meta: [
-      { charset: 'utf-8' },
-      { name: 'viewp ort', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' }
+      { charset: "utf-8" },
+      { name: "viewp ort", content: "width=device-width, initial-scale=1" },
+      { hid: "description", name: "description", content: "" }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Montserrat&display=swap' }
+      { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
+      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Montserrat&display=swap" }
     ]
   },
 
@@ -25,7 +25,7 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    '~/plugins/TiptapVuetify'
+    "~/plugins/TiptapVuetify"
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -37,16 +37,16 @@ export default {
     // https://go.nuxtjs.dev/eslint
     // '@nuxtjs/eslint-module',
     // https://go.nuxtjs.dev/vuetify
-    '@nuxtjs/vuetify',
-    '@nuxt/typescript-build',
+    "@nuxtjs/vuetify",
+    "@nuxt/typescript-build"
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
-    '@nuxtjs/apollo',
-    'nuxt-material-design-icons-iconfont',
-    '@nuxtjs/axios',
-    '@nuxtjs/auth-next'
+    "@nuxtjs/apollo",
+    "nuxt-material-design-icons-iconfont",
+    "@nuxtjs/axios",
+    "@nuxtjs/auth-next"
   ],
 
   apollo: {
@@ -55,14 +55,14 @@ export default {
         httpEndpoint: `${process.env.BASE_URL}/graphql`
       }
     },
-    authenticationType: '',
-    tokenName: 'apollo-token',
+    authenticationType: "",
+    tokenName: "apollo-token",
     websocketsOnly: false
   },
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
   vuetify: {
-    customVariables: ['~/assets/variables.scss'],
+    customVariables: ["~/assets/variables.scss"],
     theme: {
       dark: false,
       themes: {
@@ -83,7 +83,7 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
-    transpile: ['vuetify/lib', 'tiptap-vuetify']
+    transpile: ["vuetify/lib", "tiptap-vuetify"]
   },
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
@@ -95,15 +95,15 @@ export default {
     strategies: {
       local: {
         token: {
-          property: 'jwt'
+          property: "jwt"
         },
         user: {
           property: false,
           autoFetch: true
         },
         endpoints: {
-          login: { url: '/user_token', method: 'post', propertyName: 'jwt' },
-          logout:  { url: '/logout', method: 'post' },
+          login: { url: "/user_token", method: "post", propertyName: "jwt" },
+          logout: { url: "/logout", method: "post" },
           user: false
         }
       }
