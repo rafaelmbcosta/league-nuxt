@@ -7,7 +7,7 @@
     "quotes": [2, "double", "avoid-escape"]
   },
   "env": {
-    "jest": true
+    "jest/globals": true
   },
   "plugins": ["jest"]
 }
