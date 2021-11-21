@@ -28,11 +28,11 @@
 </template>
 
 <script>
-import CreateTeamByTag from '../graphql/mutations/teams/tag'
-import { TEAMS } from '../graphql/queries/teams/list'
+import CreateTeamByTag from "../graphql/mutations/teams/tag"
+import { TEAMS } from "../graphql/queries/teams/list"
 
 export default {
-  name: 'Tag',
+  name: "Tag",
   data: () => {
     return {
       idTag: null,
@@ -48,10 +48,10 @@ export default {
           variables: { teamId: this.idTag },
           refetchQueries: [{ query: TEAMS }]
         })
-        this.$store.dispatch('util/sendMessage', ['success', 'Time adicionado com sucesso!'])
+        this.$store.dispatch("util/sendMessage", ["success", "Time adicionado com sucesso!"])
         this.$refs.form.reset()
       } catch (err) {
-        this.$store.dispatch('util/sendMessage', ['error', `Erro ao cadastrar time pela tag: ${err}`])
+        this.$store.dispatch("util/sendMessage", ["error", `Erro ao cadastrar time pela tag: ${err}`])
       } finally {
         this.isLoading = false
       }

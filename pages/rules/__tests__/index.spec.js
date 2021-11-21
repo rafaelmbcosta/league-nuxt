@@ -1,15 +1,15 @@
-import { shallowMount, createLocalVue } from '@vue/test-utils'
-import Vuetify from 'vuetify'
-import VueApollo from 'vue-apollo'
-import { createMockClient } from 'mock-apollo-client'
-import index from '../index'
-import CURRENT_RULES_QUERY from '@/graphql/queries/currentRules.gql'
+import { shallowMount, createLocalVue } from "@vue/test-utils"
+import Vuetify from "vuetify"
+import VueApollo from "vue-apollo"
+import { createMockClient } from "mock-apollo-client"
+import index from "../index"
+import CURRENT_RULES_QUERY from "@/graphql/queries/currentRules.gql"
 
 const localVue = createLocalVue()
 localVue.use(VueApollo)
 const vuetify = new Vuetify()
 
-describe('index', () => {
+describe("index", () => {
   let wrapper
   let mockClient
   let apolloProvider
@@ -22,7 +22,7 @@ describe('index', () => {
     })
 
     requestHandlers = {
-      currentRulesHandler: jest.fn().mockResolvedValue({ data: { currentRules: { text: '<p>123 testing</p>' } } }),
+      currentRulesHandler: jest.fn().mockResolvedValue({ data: { currentRules: { text: "<p>123 testing</p>" } } }),
       ...handlers
     }
 
@@ -46,17 +46,17 @@ describe('index', () => {
     })
     await wrapper.vm.$nextTick()
     await wrapper.vm.$nextTick()
-    expect(wrapper.text()).toContain('As regras desta temporada ainda não foram cadastradas')
+    expect(wrapper.text()).toContain("As regras desta temporada ainda não foram cadastradas")
   })
 
   test("shows 'loading'", async () => {
     createComponent()
 
     await wrapper.vm.$nextTick()
-    expect(wrapper.text()).toContain('Carregando...')
+    expect(wrapper.text()).toContain("Carregando...")
   })
 
-  test('shows rules text', async () => {
+  test("shows rules text", async () => {
     createComponent()
 
     await wrapper.vm.$nextTick()
@@ -64,6 +64,6 @@ describe('index', () => {
     expect(wrapper.exists()).toBe(true)
     expect(wrapper.element).toMatchSnapshot()
     await wrapper.vm.$nextTick()
-    expect(wrapper.text()).toContain('123 testing')
+    expect(wrapper.text()).toContain("123 testing")
   })
 })

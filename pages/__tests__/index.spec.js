@@ -3,8 +3,8 @@
 // import index from '../index'
 
 // const localVue = createLocalVue()
-describe('index', () => {
-  it.todo('we are now working on those')
+describe("index", () => {
+  it.todo("we are now working on those")
 
   // test('loads component', () => {
   //   const vuetify = new Vuetify()

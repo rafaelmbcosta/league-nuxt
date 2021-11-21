@@ -12,9 +12,9 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
-import TeamList from '@/components/teams/TeamList'
-import FormAddTeam from '@/components/teams/FormAddTeam'
+import { mapGetters } from "vuex"
+import TeamList from "@/components/teams/TeamList"
+import FormAddTeam from "@/components/teams/FormAddTeam"
 
 export default {
   components: { TeamList, FormAddTeam },
@@ -25,7 +25,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters('team', ['searchTeams'])
+    ...mapGetters("team", ["searchTeams"])
   }
 }
 </script>
