@@ -9,5 +9,16 @@
   "env": {
     "jest/globals": true
   },
-  "plugins": ["jest"]
+  "plugins": ["jest"],
+  "overrides": [
+    {
+      "files": [
+        "**/*.spec.js",
+        "**/*.spec.jsx"
+      ],
+      "env": {
+        "jest": true
+      }
+    }
+  ]
 }
