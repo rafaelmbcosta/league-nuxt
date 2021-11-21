@@ -28,9 +28,9 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import { DISPUTES } from '@/graphql/queries/disputes/disputes'
 import SCORES from '@/graphql/queries/scores/monthScores'
-import { mapGetters } from 'vuex'
 
 export default {
   data () {

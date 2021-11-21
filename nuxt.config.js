@@ -38,7 +38,7 @@ export default {
     // '@nuxtjs/eslint-module',
     // https://go.nuxtjs.dev/vuetify
     '@nuxtjs/vuetify',
-    '@nuxt/typescript-build',
+    '@nuxt/typescript-build'
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -103,7 +103,7 @@ export default {
         },
         endpoints: {
           login: { url: '/user_token', method: 'post', propertyName: 'jwt' },
-          logout:  { url: '/logout', method: 'post' },
+          logout: { url: '/logout', method: 'post' },
           user: false
         }
       }
