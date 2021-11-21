@@ -1,3 +1,5 @@
+/* global jest */
+
 import { shallowMount, createLocalVue } from "@vue/test-utils"
 import Vuetify from "vuetify"
 import VueApollo from "vue-apollo"
