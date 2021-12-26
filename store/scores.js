@@ -7,31 +7,31 @@ export const state = () => ({
 })
 
 export const getters = {
-  selected: (state) => { 
+  selected: (state) => {
     return {
       score: state.selected.score,
       dispute: parseInt(state.selected.dispute)
     }
-   }
+  }
 }
 
 export const mutations = {
-  SET_SELECTED(state, payload) {
-    console.log(payload, 'mutations');
+  SET_SELECTED (state, payload) {
+    console.log(payload, "mutations")
     state.selected = payload
   },
-  SET_SCORE(state, payload) {
+  SET_SCORE (state, payload) {
     state.selected.score = payload
   },
-  SET_DISPUTE(state, payload) {
+  SET_DISPUTE (state, payload) {
     state.selected.dispute = payload
   }
 }
 
 export const actions = {
-  setSelected({commit}, payload) {
-    console.log(payload, 'actions');
-    commit('SET_SELECTED', payload)
+  setSelected ({ commit }, payload) {
+    console.log(payload, "actions")
+    commit("SET_SELECTED", payload)
   }
 }
 
