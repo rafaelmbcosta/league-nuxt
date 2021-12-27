@@ -14,20 +14,20 @@
 </template>
 
 <script>
-import { mapActions, mapState } from 'vuex'
+import { mapActions, mapState } from "vuex"
 
 export default {
   data () {
     return {
-      email: 'zora@gmail.com',
-      password: '123456'
+      email: "zora@gmail.com",
+      password: "123456"
     }
   },
   computed: {
-    ...mapState('util', ['loading'])
+    ...mapState("util", ["loading"])
   },
   methods: {
-    ...mapActions('util', ['login'])
+    ...mapActions("util", ["login"])
   }
 }
 </script>

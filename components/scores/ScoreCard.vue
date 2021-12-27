@@ -4,12 +4,13 @@
       <strong>{{ index + 1 }}</strong>
       <TeamColumn :team="score.team" />
       DETALHES
+      {{ score }}
     </v-card-text>
   </v-card>
 </template>
 
 <script>
-import TeamColumn from '@/components/shared/TeamColumn.vue'
+import TeamColumn from "@/components/shared/TeamColumn.vue"
 
 export default {
   components: {
@@ -18,11 +19,11 @@ export default {
   props: {
     score: {
       type: Object,
-      default: null
+      required: true
     },
     index: {
       type: Number,
-      default: 0
+      required: true
     }
   }
 }

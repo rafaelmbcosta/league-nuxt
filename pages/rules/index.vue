@@ -8,22 +8,18 @@
         <p> As regras desta temporada ainda não foram cadastradas </p>
       </div>
     </div>
-    <div v-if="$apollo.isLoading">
+    <div v-if="$apollo.loading">
       Carregando...
     </div>
   </div>
 </template>
 
 <script>
-import gql from 'graphql-tag'
+import CURRENT_RULES_QUERY from '@/graphql/queries/currentRules.gql'
 
 export default {
   apollo: {
-    currentRules: gql`query {
-      currentRules {
-        text
-      }
-    }`
+    currentRules: CURRENT_RULES_QUERY
   }
 }
 </script>

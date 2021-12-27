@@ -12,17 +12,18 @@
 </template>
 
 <script>
-import SCORES from '@/graphql/queries/scores/monthScores'
-import { mapGetters } from 'vuex'
-import ScoreCard from './ScoreCard.vue'
+import { mapGetters } from "vuex"
+import ScoreCard from "./ScoreCard.vue"
+import SCORES from "@/graphql/queries/scores/monthScores"
 
 export default {
   components: {
     ScoreCard
   },
   computed: {
-    ...mapGetters('scores', ['selected'])
+    ...mapGetters("scores", ["selected"])
   },
+  // tornar essa QUERY dinamica...
   apollo: {
     scores: {
       query: SCORES,

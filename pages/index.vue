@@ -14,8 +14,8 @@
 </template>
 
 <script>
-import TopScores from '@/components/top_scores/Index.vue'
-import Scores from '@/components/scores/Index.vue'
+import TopScores from "@/components/top_scores/Index.vue"
+import Scores from "@/components/scores/Index.vue"
 
 export default {
   components: {

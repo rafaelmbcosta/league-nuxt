@@ -28,9 +28,9 @@
 </template>
 
 <script>
-import { DISPUTES } from '@/graphql/queries/disputes/disputes'
-import SCORES from '@/graphql/queries/scores/monthScores'
-import { mapGetters } from 'vuex'
+import { mapGetters } from "vuex"
+import { DISPUTES } from "@/graphql/queries/disputes/disputes"
+import SCORES from "@/graphql/queries/scores/monthScores"
 
 export default {
   data () {
@@ -38,18 +38,23 @@ export default {
       loading: false,
       query: [],
       scores: [
-        { type: 'month', text: 'disputa mensal' }
+        { type: "month", text: "disputa mensal", query: SCORES },
+        { type: "league", text: "copa da liga", query: SCORES },
+        { type: "currency", text: "patrimônio", query: SCORES },
+        { type: "first_turn", text: "primeiro turno", query: SCORES },
+        { type: "second_turn", text: "segundo turno", query: SCORES },
+        { type: "championship", text: "campeonato", query: SCORES }
       ]
     }
   },
   computed: {
-    ...mapGetters('scores', ['selected']),
+    ...mapGetters("scores", ["selected"]),
     score: {
       get () {
         return this.selected.score
       },
       set (value) {
-        this.$store.commit('scores/SET_SCORE', value)
+        this.$store.commit("scores/SET_SCORE", value)
       }
     },
     dispute: {
@@ -57,18 +62,19 @@ export default {
         return this.selected.dispute.toString()
       },
       set (value) {
-        this.$store.commit('scores/SET_DISPUTE', value)
+        this.$store.commit("scores/SET_DISPUTE", value)
       }
     }
   },
   mounted () {
-    this.$store.dispatch('scores/setSelected', {
+    this.$store.dispatch("scores/setSelected", {
       dispute: this.disputes[0].id,
       score: this.scores[0].type
     })
     this.getScores()
   },
   methods: {
+    selectQuery: () => this.scores.find(score => this.selected === score.type),
     async getScores () {
       this.loading = true
       try {
@@ -77,7 +83,7 @@ export default {
           variables: { disputeId: this.selected.dispute }
         })
       } catch (err) {
-        this.$store.dispatch('util/sendMessage', ['error', `Erro ao buscar resultados ${err}`])
+        this.$store.dispatch("util/sendMessage", ["error", `Erro ao buscar resultados ${err}`])
       } finally {
         this.loading = false
       }
