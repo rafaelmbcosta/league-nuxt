@@ -14,7 +14,7 @@
 <script>
 import { mapGetters } from "vuex"
 import ScoreCard from "./ScoreCard.vue"
-import SCORES from "@/graphql/queries/scores/monthScores"
+import SCORES from "~/graphql/queries/scores/monthScores.gql"
 
 export default {
   components: {

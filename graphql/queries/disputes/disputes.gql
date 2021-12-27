@@ -1,6 +1,4 @@
-import gql from "graphql-tag"
-
-export const DISPUTES = gql`query {
+query {
   disputes {
     id
     name
@@ -11,4 +9,4 @@ export const DISPUTES = gql`query {
       status
     }
   }
-}`
+}

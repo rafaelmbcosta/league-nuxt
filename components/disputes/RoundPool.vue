@@ -1,14 +1,14 @@
 <template>
   <div>
-   <v-chip
+    <v-chip
       v-for="(round, index) in pool"
       :key="`pool_${index}`"
       class="ma-2"
       close
       outlined
-      @click:close="add(round)"
       close-icon="add_circle"
       color="teal"
+      @click:close="add(round)"
     >
       <b>#&nbsp;{{ round.number }}</b>
     </v-chip>
@@ -17,13 +17,22 @@
 
 <script>
 import gql from "graphql-tag"
-import { DISPUTES } from "@/graphql/queries/disputes/disputes"
+import { DISPUTES } from "~/graphql/queries/disputes/disputes.gql"
 import { POOL } from "@/graphql/queries/rounds/pool"
 
 export default {
-  props: ["pool", "dispute"],
+  props: {
+    pool: {
+      type: Array,
+      required: true
+    },
+    dispute: {
+      type: Object,
+      required: true
+    }
+  },
   methods: {
-    async add(round) {
+    async add (round) {
       try {
         await this.$apollo.mutate({
           mutation: gql`mutation ($id: Int!, $roundId: Int!) {
@@ -37,12 +46,11 @@ export default {
           },
           refetchQueries: [{ query: DISPUTES }, { query: POOL }],
           update: () => {
-            this.$store.dispatch('util/sendMessage', ['success', 'Rodada vinculada com sucesso'])
+            this.$store.dispatch("util/sendMessage", ["success", "Rodada vinculada com sucesso"])
           }
         })
       } catch (e) {
-        console.log(e)
-        this.$store.dispatch('util/sendMessage', ['error', `Erro ao vincular rodada ${e}`])
+        this.$store.dispatch("util/sendMessage", ["error", `Erro ao vincular rodada ${e}`])
       }
     }
   }

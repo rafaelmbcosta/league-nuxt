@@ -6,8 +6,8 @@
       class="ma-2"
       :close="round.status == 'created'"
       outlined
-      @click:close="remove(round)"
       color="red"
+      @click:close="remove(round)"
     >
       <b>#&nbsp;{{ round.number }}</b>
     </v-chip>
@@ -15,14 +15,23 @@
 </template>
 
 <script>
-import gql from 'graphql-tag'
-import { DISPUTES } from "@/graphql/queries/disputes/disputes"
+import gql from "graphql-tag"
+import { DISPUTES } from "~/graphql/queries/disputes/disputes.gql"
 import { POOL } from "@/graphql/queries/rounds/pool"
 
 export default {
-  props: ["rounds", "dispute"],
+  props: {
+    rounds: {
+      type: Array,
+      default: () => []
+    },
+    dispute: {
+      type: Object,
+      required: true
+    }
+  },
   methods: {
-    async remove(round) {
+    async remove (round) {
       try {
         await this.$apollo.mutate({
           mutation: gql`mutation ($id: Int!) {
@@ -35,12 +44,11 @@ export default {
           },
           refetchQueries: [{ query: DISPUTES }, { query: POOL }],
           update: () => {
-            this.$store.dispatch('util/sendMessage', ['success', 'Rodada desvinculada com sucesso'])
+            this.$store.dispatch("util/sendMessage", ["success", "Rodada desvinculada com sucesso"])
           }
         })
       } catch (e) {
-        console.log(e)
-        this.$store.dispatch('util/sendMessage', ['error', `Erro ao desvincular rodada ${e}`])
+        this.$store.dispatch("util/sendMessage", ["error", `Erro ao desvincular rodada ${e}`])
       }
     }
   }

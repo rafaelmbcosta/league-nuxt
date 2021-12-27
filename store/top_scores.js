@@ -1,4 +1,4 @@
-import { topScores } from "@/services/mock";
+import { topScores } from "@/services/mock"
 
 export const state = () => ({
   loading: false,
@@ -22,9 +22,9 @@ export const mutations = {
 export const actions = {
   async getTopScores ({ commit }) {
     const response = await topScores()
-    await commit('SET_TOP_SCORES', response.data)
+    await commit("SET_TOP_SCORES", response.data)
   },
   async setLoading ({ commit }, value) {
-    await commit('SET_LOADING', value)
+    await commit("SET_LOADING", value)
   }
 }

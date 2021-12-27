@@ -9,11 +9,16 @@
 </template>
 
 <script>
-import ScoresItem from './ScoresItem'
+import ScoresItem from "./ScoresItem"
 
 export default {
   components: { ScoresItem },
-  props: ['scores']
+  props: {
+    scores: {
+      type: Array,
+      default: () => []
+    }
+  }
 }
 </script>
 

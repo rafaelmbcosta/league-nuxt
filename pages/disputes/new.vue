@@ -6,8 +6,8 @@
       color="#00796b"
     >
       <v-text-field
-        label="NOME"
         v-model="description"
+        label="NOME"
         required="true"
       />
       <v-btn
@@ -17,26 +17,27 @@
       >
         CRIAR
       </v-btn>
-
     </BorderCard>
-    <v-btn class="mt-10" to="/disputes" color="error"> Voltar </v-btn>
+    <v-btn class="mt-10" to="/disputes" color="error">
+      Voltar
+    </v-btn>
   </div>
 </template>
 
 <script>
-import BorderCard from '@/components/shared/BorderCard'
-import { DISPUTES } from '@/graphql/queries/disputes/disputes'
-import gql from 'graphql-tag'
+import gql from "graphql-tag"
+import BorderCard from "@/components/shared/BorderCard"
+import { DISPUTES } from "~/graphql/queries/disputes/disputes.gql"
 
 export default {
   components: { BorderCard },
-  data() {
+  middleware: ["auth"],
+  data () {
     return {
       loading: false,
       description: ""
     }
   },
-  middleware: ['auth'],
   methods: {
     async saveDispute () {
       try {
@@ -50,13 +51,13 @@ export default {
           },
           refetchQueries: [{ query: DISPUTES }],
           update: () => {
-            this.$store.dispatch('util/sendMessage', ['success', 'Mês de disputa criado com sucesso !'])
+            this.$store.dispatch("util/sendMessage", ["success", "Mês de disputa criado com sucesso !"])
             this.loading = false
-            this.description = ''
+            this.description = ""
           }
         })
       } catch (error) {
-        this.$store.dispatch("util/sendMessage", ['error', `Erro ao criar mês de disputa: ${error}`])
+        this.$store.dispatch("util/sendMessage", ["error", `Erro ao criar mês de disputa: ${error}`])
       }
     }
   }

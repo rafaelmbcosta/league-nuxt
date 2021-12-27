@@ -1,5 +1,5 @@
-import topScoresJson from '@/fixtures/top_scores/topScores.json'
-import teamsJson from '@/fixtures/teams.json'
+import topScoresJson from "@/fixtures/top_scores/topScores.json"
+import teamsJson from "@/fixtures/teams.json"
 
 const delayedPromise = (data) => {
   return new Promise((resolve) => {

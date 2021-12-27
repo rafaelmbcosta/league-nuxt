@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import CURRENT_RULES_QUERY from '@/graphql/queries/currentRules.gql'
+import CURRENT_RULES_QUERY from "@/graphql/queries/currentRules.gql"
 
 export default {
   apollo: {

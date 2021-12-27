@@ -1,8 +1,10 @@
 import Vue from "vue"
 import Vuetify from "vuetify"
 import { config } from "@vue/test-utils"
+import Vuex from "vuex"
 
 Vue.use(Vuetify)
+Vue.use(Vuex)
 Vue.config.silent = true
 
 // Vue.config.ignoredElements = ['nuxt-link']

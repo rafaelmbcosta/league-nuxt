@@ -5,8 +5,8 @@ export const state = () => ({
   loading: false, // login
   snackBar: {
     show: false,
-    color: '',
-    text: ''
+    color: "",
+    text: ""
   }
 })
 
@@ -20,34 +20,34 @@ export const mutations = {
   RESET_SNACKBAR (state) {
     state.snackBar = {
       show: false,
-      color: '',
-      text: ''
+      color: "",
+      text: ""
     }
   }
 }
 
 export const actions = {
   async login ({ commit }, payload) {
-    commit('SET_LOADING', true)
+    commit("SET_LOADING", true)
     try {
-      const response = await this.$auth.loginWith('local', {
+      const response = await this.$auth.loginWith("local", {
         data: { auth: payload }
       })
       this.$apolloHelpers.onLogin(response.data.jwt)
     } catch (err) {
-      console.log('LOGIN ERROR', err)
+      console.log("LOGIN ERROR", err)
     }
-    commit('SET_LOADING', false)
+    commit("SET_LOADING", false)
   },
   async logout () {
     await this.$auth.logout()
     this.$apolloHelpers.onLogout()
-    this.$router.push('/')
+    this.$router.push("/")
   },
   closeSnack ({ commit }) {
-    commit('RESET_SNACKBAR')
+    commit("RESET_SNACKBAR")
   },
   sendMessage ({ commit }, messageArray) {
-    commit('SEND_MESSAGE', messageArray)
+    commit("SEND_MESSAGE", messageArray)
   }
 }

@@ -1,23 +1,32 @@
 <template>
   <div>
-    <v-btn class="mr-5" :to="`disputes/${dispute.id}`" outlined color="primary">GERENCIAR RODADAS</v-btn>
-    <v-btn class="mr-5" :to="`disputes/edit/${dispute.id}`" outlined color="yellow darken-4">EDITAR</v-btn>
-    <v-btn class="mr-5" @click="deleteDispute()" outlined color="error">DESATIVAR</v-btn>
+    <v-btn class="mr-5" :to="`disputes/${dispute.id}`" outlined color="primary">
+      GERENCIAR RODADAS
+    </v-btn>
+    <v-btn class="mr-5" :to="`disputes/edit/${dispute.id}`" outlined color="yellow darken-4">
+      EDITAR
+    </v-btn>
+    <v-btn class="mr-5" outlined color="error" @click="deleteDispute()">
+      DESATIVAR
+    </v-btn>
   </div>
 </template>
 
 <script>
-import colors from 'vuetify/es5/util/colors'
-import BorderCard from '@/components/shared/BorderCard'
-import { DISPUTES } from '@/graphql/queries/disputes/disputes'
-import gql from 'graphql-tag'
+import gql from "graphql-tag"
+import { DISPUTES } from "~/graphql/queries/disputes/disputes.gql"
 
 export default {
-  props: ["dispute"],
+  props: {
+    dispute: {
+      type: Object,
+      required: true
+    }
+  },
   methods: {
-    async deleteDispute() {
+    async deleteDispute () {
       try {
-        let response = await this.$apollo.mutate({
+        await this.$apollo.mutate({
           mutation: gql`mutation($id: Int!) {
             deleteDispute(id: $id) {
               id
@@ -28,12 +37,11 @@ export default {
           },
           refetchQueries: [{ query: DISPUTES }],
           update: () => {
-            this.$store.dispatch('util/sendMessage', ['success', 'Mês de disputa removido com sucesso !'])
+            this.$store.dispatch("util/sendMessage", ["success", "Mês de disputa removido com sucesso !"])
           }
         })
       } catch (error) {
-        console.log(error)
-        this.$store.dispatch("util/sendMessage", ['error', 'error'])
+        this.$store.dispatch("util/sendMessage", ["error", "error"])
       }
     }
   }

@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`index loads component 1`] = `
+<div>
+  <v-row-stub tag="div">
+    <v-col-stub cols="12" tag="div">
+      <topscores-stub></topscores-stub>
+    </v-col-stub>
+  </v-row-stub>
+  <v-row-stub tag="div">
+    <v-col-stub cols="12" tag="div">
+      <scores-stub></scores-stub>
+    </v-col-stub>
+  </v-row-stub>
+</div>
+`;

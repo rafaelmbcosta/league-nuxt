@@ -15,17 +15,16 @@
       :key="index"
       :dispute="dispute"
     />
-
   </div>
 </template>
 
 <script>
-import DisputeCard from '@/components/disputes/DisputeCard'
-import { DISPUTES } from '@/graphql/queries/disputes/disputes'
+import DisputeCard from "@/components/disputes/DisputeCard"
+import { DISPUTES } from "~/graphql/queries/disputes/disputes.gql"
 
 export default {
-  middleware: ["auth"],
   components: { DisputeCard },
+  middleware: ["auth"],
   apollo: {
     disputes: DISPUTES
   }
