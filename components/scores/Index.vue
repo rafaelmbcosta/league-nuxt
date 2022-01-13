@@ -10,7 +10,10 @@ import Form from "./Form"
 import List from "./List"
 
 export default {
-  components: { Form, List }
+  components: {
+    Form,
+    List
+  }
 }
 </script>
 

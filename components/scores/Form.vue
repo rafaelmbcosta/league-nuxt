@@ -29,8 +29,8 @@
 
 <script>
 import { mapGetters } from "vuex"
-import { DISPUTES } from "~/graphql/queries/disputes/disputes.gql"
-import { SCORES } from "~/graphql/queries/scores/monthScores.gql"
+import DISPUTES from "~/graphql/queries/disputes/disputes.gql"
+import SCORES from "~/graphql/queries/scores/monthScores.gql"
 
 export default {
   data () {
