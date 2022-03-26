@@ -1,8 +1,5 @@
 <template>
   <v-container>
-    <h2 class="title">
-      MAIORES PONTUADORES
-    </h2>
     <Loader v-if="loading" />
 
     <ScoresList
@@ -14,15 +11,15 @@
 
 <script>
 
-import { mapState, mapGetters } from 'vuex'
-import Loader from './Loader'
-import ScoresList from './ScoresList'
+import { mapState, mapGetters } from "vuex"
+import Loader from "./Loader"
+import ScoresList from "./ScoresList"
 
 export default {
   components: { Loader, ScoresList },
   computed: {
-    ...mapState('top_scores', ['scores', 'loading']),
-    ...mapGetters('top_scores', ['haveScores'])
+    ...mapState("top_scores", ["scores", "loading"]),
+    ...mapGetters("top_scores", ["haveScores"])
   }
 }
 

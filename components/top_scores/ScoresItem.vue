@@ -9,34 +9,36 @@
             <b>{{ score.team }}</b>
           </div>
           <div>{{ score.player }}</div>
+          <v-btn
+            class="mt-5"
+            small
+            color="primary"
+            :to="score.ref"
+            outlined
+          >
+            VER PONTUAÇÕES
+          </v-btn>
         </div>
       </v-card-text>
     </v-card>
   </v-col>
 </template>
 
-<script lang="ts">
-import { PropOptions } from 'vue'
-
-interface Score {
-  title: string
-  team: string
-  player: string
-}
+<script>
 
 export default {
   props: {
     score: {
       type: Object,
       required: true
-    } as PropOptions<Score>
+    }
   }
 }
 </script>
 
-<style>
+<style scoped>
   h3 {
-    color: #0E9594 !important;
+    color: #000000DE !important;
   }
   .card-top-score {
     border: 1px solid gray !important;

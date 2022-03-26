@@ -28,7 +28,7 @@
       absolute
       temporary
     >
-      <v-list-item v-if="this.$auth.loggedIn">
+      <v-list-item v-if="$auth.loggedIn">
         <v-list-item-content>
           <v-list-item-title>Olá Admin!</v-list-item-title>
         </v-list-item-content>
@@ -71,7 +71,7 @@
 </template>
 
 <script>
-import Snackbar from '@/components/shared/Snackbar'
+import Snackbar from "@/components/shared/Snackbar"
 
 export default {
   components: {
@@ -81,11 +81,11 @@ export default {
     drawer: false,
     group: null,
     items: [
-      { title: 'Home', icon: 'mdi-view-dashboard', ref: '/', auth: null, menu: true },
-      { title: 'Login', icon: 'mdi-login', ref: '/login', auth: false, menu: true },
-      { title: 'Logout', icon: 'mdi-logout', ref: null, logout: true, auth: true, menu: true },
-      { title: 'Editar Regras', icon: 'assignment', ref: '/rules/edit', auth: true, menu: false },
-      { title: 'Regras', icon: 'chrome_reader_mode', ref: '/rules', auth: null, menu: false },
+      { title: "Home", icon: "mdi-view-dashboard", ref: "/", auth: null, menu: true },
+      { title: "Login", icon: "mdi-login", ref: "/login", auth: false, menu: true },
+      { title: "Logout", icon: "mdi-logout", ref: null, logout: true, auth: true, menu: true },
+      { title: "Editar Regras", icon: "assignment", ref: "/rules/edit", auth: true, menu: false },
+      { title: "Regras", icon: "chrome_reader_mode", ref: "/rules", auth: null, menu: false },
       { title: "Meses de Disputa", icon: "mdi-calendar", ref: "/disputes", auth: true, menu: false },
       { title: "Cadastrar Times", icon: "mdi-security", ref: "/teams", auth: true, menu: false }
     ]
@@ -105,7 +105,7 @@ export default {
   },
   methods: {
     logout () {
-      this.$store.dispatch('util/logout')
+      this.$store.dispatch("util/logout")
     }
   }
 }

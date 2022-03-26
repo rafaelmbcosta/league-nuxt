@@ -1,24 +1,24 @@
 [
   {
-    "title": "DISPUTA MENSAL",
+    "type": "month",
     "player": "Rafael Costa",
     "team": "Ferrimbahçe",
     "icon": "https://s3.glbimg.com/v1/AUTH_58d78b787ec34892b5aaa0c7a146155f/cartola_svg_112/escudo/e6/09/39/001d366c29-9e34-4201-958b-34aa246edfe620180414140939"
   },
   {
-    "title": "COPA DA LIGA",
+    "type": "league",
     "player": "Alberto Perdigão",
     "team": "Perdicartola",
     "icon": "https://s3.glbimg.com/v1/AUTH_58d78b787ec34892b5aaa0c7a146155f/cartola_svg_112/escudo/e6/09/39/001d366c29-9e34-4201-958b-34aa246edfe620180414140939"
   },
   {
-    "title": "CAMPEONATO",
+    "type": "championship",
     "player": "Marciano",
     "team": "Vovô do Yan",
     "icon": "https://s3.glbimg.com/v1/AUTH_58d78b787ec34892b5aaa0c7a146155f/cartola_svg_133/escudo/fc/12/38/00ad839309-7037-49f9-a6e1-fbff4871b2fc20190402211238"
   },
   {
-    "title": "PATRIMÔNIO",
+    "type": "currency",
     "player": "Fabio Gurgel",
     "team": "Fabayern",
     "icon": "https://s3.glbimg.com/v1/AUTH_58d78b787ec34892b5aaa0c7a146155f/cartola_svg_133/escudo/fc/12/38/00ad839309-7037-49f9-a6e1-fbff4871b2fc20190402211238"
